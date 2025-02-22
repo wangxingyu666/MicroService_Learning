@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: ai-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos # ?????Nacos???
+        password: nacos # ?????Nacos??
+
+app:
+  api:
+    url: https://dashscope.aliyuncs.com/api/v1/services/aigc/text-generation/generation # ??????API URL
+    key: sk-f57f5e97e00b4b72acf825892b758803 # ?????API Key
