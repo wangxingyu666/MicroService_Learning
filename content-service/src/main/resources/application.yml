@@ -1,22 +1,11 @@
 server:
-  port: 8081
+  port: 8088
 
 spring:
-  application:
-    name: content-service
-  cloud:
-    nacos:
-      discovery:
-        server-addr: localhost:8848
-        username: nacos
-        password: nacos
-      feign:
+  profiles:
+    feign:
         client:
           config:
             default:
               loggerLevel: full
-  datasource:
-    url: jdbc:mysql://localhost:3306/content_center?useSSL=false&serverTimezone=UTC
-    username: root
-    password: password
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    active: dev

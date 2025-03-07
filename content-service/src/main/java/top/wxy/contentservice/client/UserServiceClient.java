@@ -8,7 +8,7 @@ import top.wxy.contentservice.vo.UserVo;
 /**
  * @author 笼中雀
  */
-@FeignClient(name = "user-service1")
+@FeignClient(name = "user-service")
 public interface UserServiceClient {
 
     @GetMapping("/user/{id}")

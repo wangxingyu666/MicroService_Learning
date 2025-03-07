@@ -1,0 +1,5 @@
+oss:
+  endpoint: oss-cn-nanjing.aliyuncs.com
+  access-key: LTAI5t8rJwPFnSmdGQJK8LSw
+  secret-key: bcY5wjfoHOkDWJwkk3iFhI6ojURfus
+  bucket-name: my-wxy-bucket
