@@ -1,6 +1,9 @@
 package top.wxy.contentservice.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.nacos.api.model.v2.Result;
 import jakarta.annotation.Resource;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,20 +19,22 @@ import top.wxy.contentservice.vo.UserVo;
  * @author 笼中雀
  */
 @RestController
-@RequestMapping("/share")
+@AllArgsConstructor
 public class ShareController {
 
-    @Autowired
+    @Resource
     private ShareService shareService;
 
-    @Autowired
+    @Resource
     private UserServiceClient userServiceClient;
 
-    @GetMapping("/{id}")
+    @GetMapping("/share/{id}")
+    @SentinelResource(value = "/share/{id}")
     public ShareVo getShareById(@PathVariable Integer id) {
         Share share = shareService.getById(id);
 
-        UserVo userVo = userServiceClient.getUserById(share.getUserId());
+        Result<UserVo> result = userServiceClient.getUserById(share.getUserId());
+        UserVo userVo = result.getData();
 
         ShareVo shareVO = new ShareVo();
         shareVO.setId(share.getId());
@@ -50,4 +55,5 @@ public class ShareController {
 
         return shareVO;
     }
+
 }

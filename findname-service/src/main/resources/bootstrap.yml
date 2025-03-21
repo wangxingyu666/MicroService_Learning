@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos  # Nacos 用户名
+        password: nacos  # Nacos 密码

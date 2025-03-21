@@ -1,0 +1,29 @@
+server:
+  port: 9090
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: surname_route
+          order: 1
+          uri: lb://surname-service
+          predicates:
+            - Path=/surname/**
+            - TimeRange=08:00,20:00
+          filters:
+            - StripPrefix=0
+#    sentinel:
+#      filter:
+#        enabled: true
+#      transport:
+#        port: 8719
+#        dashboard: localhost:8888
+#      scg:
+#        fallback:
+#          mode: response
+#          response-status: 500
+#          response-body: '"code":500,"msg":"网关流量超量!!"'
